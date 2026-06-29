@@ -13,10 +13,9 @@ export class ProductCard {
   private readonly cartService = inject(CartService);
 
   product = input.required<IProduct>();
-  cart = this.cartService.getCart();
-
+  
   isInCart = linkedSignal(() => {
-    return this.cart.some(prod => prod.id === this.product().id);
+    return this.cartService.isInCart(this.product());
   })
 
   addToCart(){

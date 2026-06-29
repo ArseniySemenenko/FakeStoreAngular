@@ -25,4 +25,9 @@ export class CartService {
             return [];
         }
     }
+
+    isInCart(product: IProduct){
+        let cart = this.getCart();
+        return cart.some(prod => prod.id === product.id);
+    }
 }

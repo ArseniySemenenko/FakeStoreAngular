@@ -1,26 +1,52 @@
 <div
     class="flex pt-[10vh] w-screen min-h-screen justify-center flex-col"
 >
-    @if(filter() === "clothing" || filter() === "women" || filter() === "men"){
     <nav
         class="w-screen h-[5vh] bg-gray-300 flex flex-row"
     >
         <div class="border-r-gray-400 text-gray-600 border-r-2 w-[50%] h-full flex justify-center items-center">
             <button
                 class="hover:text-gray-900 cursor-pointer active:text-gray-400"
-                (click)="filter.set(`men`)"
-            >Men's</button>
+                (click)="filter.set(`clothing`)"
+            >Clothes</button>
+        </div>
+        <div class="border-r-gray-400 border-r-2 w-[50%] h-full text-gray-600 flex justify-center items-center">
+            <button
+                class="hover:text-gray-900 cursor-pointer active:text-gray-400"
+                (click)="filter.set(`electronics`)"
+            >Electronics</button>
         </div>
         <div class="w-[50%] h-full text-gray-600 flex justify-center items-center">
             <button
                 class="hover:text-gray-900 cursor-pointer active:text-gray-400"
-                (click)="filter.set(`women`)"
+                (click)="filter.set(`jewelery`)"
+            >Jewelery</button>
+        </div>
+    </nav>
+
+    @if(filter() === "clothing" || filter() === "women" || filter() === "men"){
+    <nav
+        class="w-screen h-[10vh]  flex flex-row justify-around items-center"
+    >
+        <div 
+            class="hover:text-gray-900 cursor-pointer active:text-gray-400 rounded-3xl border-1 border-gray-500 w-[10%] h-[50%] flex justify-center items-center"
+            (click)="filter.set(`men`)"
+        >
+            <button
+            >Men's</button>
+        </div>
+        <div 
+            class="hover:text-gray-900 cursor-pointer active:text-gray-400 rounded-3xl border-1 border-gray-500 w-[10%] h-[50%] flex justify-center items-center"
+            (click)="filter.set(`women`)"
+        >
+            <button
             >Woman's</button>
         </div>
     </nav>
     }
+
     <div 
-        class="grid w-full justify-items-center grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 gap-x-1 p-5 m-auto justify-center"
+        class="grid w-full justify-items-center grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 gap-x-1 px-5 m-auto justify-center"
     >
         @for(product of display(); track $index){
             <app-product-card [product]="product"></app-product-card>

@@ -1,4 +1,4 @@
-import { Component, inject, linkedSignal, OnInit, signal } from '@angular/core';
+import { Component, inject, linkedSignal, OnInit, signal , input} from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { IProduct } from '../../models/product-model';
 import { ProductCard } from '../product-card/product-card';
@@ -15,12 +15,13 @@ export class ProductsList implements OnInit{
 
   products = signal<IProduct[]>([]);
   display = linkedSignal<IProduct[]>(() => {
+    if(!this.filter()) return this.products();
     return this.products().filter(product => {
       if(this.filter() === "men") return product.category === "men's clothing"
       return product.category.includes(this.filter())
     });
   })
-  filter = signal<string>("");
+  filter = input<string>("");
 
   ngOnInit(){
     this.productsService.getProdutcs()
@@ -28,5 +29,4 @@ export class ProductsList implements OnInit{
       this.products.set([...res]);
     })
   }
-
 }

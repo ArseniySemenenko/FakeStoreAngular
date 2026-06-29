@@ -7,19 +7,22 @@
         <div class="border-r-gray-400 text-gray-600 border-r-2 w-[50%] h-full flex justify-center items-center">
             <button
                 class="hover:text-gray-900 cursor-pointer active:text-gray-400"
-                (click)="filter.set(`clothing`)"
+                //(click)="filter.set(`clothing`)"
+                routerLink="/catalog/clothing"
             >Clothes</button>
         </div>
         <div class="border-r-gray-400 border-r-2 w-[50%] h-full text-gray-600 flex justify-center items-center">
             <button
                 class="hover:text-gray-900 cursor-pointer active:text-gray-400"
-                (click)="filter.set(`electronics`)"
+                //(click)="filter.set(`electronics`)"
+                routerLink="/catalog/electronics"
             >Electronics</button>
         </div>
         <div class="w-[50%] h-full text-gray-600 flex justify-center items-center">
             <button
                 class="hover:text-gray-900 cursor-pointer active:text-gray-400"
-                (click)="filter.set(`jewelery`)"
+                //(click)="filter.set(`jewelery`)"
+                routerLink="/catalog/jewelery"
             >Jewelery</button>
         </div>
     </nav>
@@ -30,7 +33,8 @@
     >
         <div 
             class="hover:text-gray-900 cursor-pointer active:text-gray-400 rounded-3xl border border-gray-500 w-[10%] h-[50%] flex justify-center items-center"
-            (click)="filter.set(`men`)"
+            //(click)="filter.set(`men`)"
+            routerLink="/catalog/men"
         >
             <button
                 class="cursor-pointer"
@@ -38,7 +42,8 @@
         </div>
         <div 
             class="hover:text-gray-900 cursor-pointer active:text-gray-400 rounded-3xl border border-gray-500 w-[10%] h-[50%] flex justify-center items-center"
-            (click)="filter.set(`women`)"
+            //(click)="filter.set(`women`)"
+            routerLink="/catalog/women"
         >
             <button
                 class="cursor-pointer"

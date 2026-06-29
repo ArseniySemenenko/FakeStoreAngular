@@ -1,4 +1,4 @@
-import { Component, inject, input, linkedSignal, signal } from '@angular/core';
+import { Component, inject, input, linkedSignal } from '@angular/core';
 import { IProduct } from '../../models/product-model';
 import { CartService } from '../../services/cart-service';
 
@@ -13,7 +13,7 @@ export class ProductCard {
   private readonly cartService = inject(CartService);
 
   product = input.required<IProduct>();
-  
+
   isInCart = linkedSignal(() => {
     return this.cartService.isInCart(this.product());
   })

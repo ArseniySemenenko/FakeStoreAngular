@@ -1,0 +1,7 @@
+<div
+    class="w-screen flex flex-col items-center pt-[10vh]"
+>
+    @for(prod of cart; track prod.id){
+        <app-cart-item [product]="prod"></app-cart-item>
+    } 
+</div>

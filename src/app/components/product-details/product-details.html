@@ -1,0 +1,40 @@
+<div class="pt-[15vh] w-screen h-screen px-[10%]">
+    <div class="flex flex-col">
+        <div class="flex flex-row">
+            <div class="w-[30vw] h-[30vh] pr-10">
+                <img 
+                    class="h-full"
+                    src={{product().image}} 
+                    alt=""
+                >
+            </div>
+            <div>
+                <p class="font-bold text-2xl md:text-3xl lg:text-5xl">{{product().title}}</p>
+                <div class="flex pt-10 justify-between items-center w-[200px] md:w-[300px] lg:w-[400px]">
+                    <div>
+                        <p class="font-bold text-2xl md:text-3xl lg:text-5xl text-green-600">
+                            {{product().price}}$
+                        </p>
+                    </div>
+                    <div>
+                        @if(!isInCart()){
+                            <button
+                                (click)="addToCart()"
+                            >Add to card</button>
+                        }
+                        @else{
+                            <span
+                                class="text-gray-500"
+                            >
+                                in cart
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10">
+            <p>{{product().description}}</p>
+        </div>
+    </div>
+</div>

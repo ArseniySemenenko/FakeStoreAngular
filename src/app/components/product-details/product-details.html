@@ -23,11 +23,12 @@
                             >Add to card</button>
                         }
                         @else{
-                            <span
+                            <button
                                 class="text-gray-500"
+                                (click)="removeFromCart()"
                             >
                                 in cart
-                            </span>
+                            </button>
                         }
                     </div>
                 </div>

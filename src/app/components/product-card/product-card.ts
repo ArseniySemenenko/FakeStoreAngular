@@ -23,4 +23,9 @@ export class ProductCard {
     this.cartService.addToCart(this.product());
     this.isInCart.set(true);
   }
+
+  removeFromCart(){
+    this.cartService.removeFromCart(this.product().id);
+    this.isInCart.set(false);
+  }
 }

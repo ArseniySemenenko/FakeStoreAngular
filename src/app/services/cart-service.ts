@@ -17,6 +17,15 @@ export class CartService {
         if(info) console.log(info)
     }
 
+    removeFromCart(id: number){
+        let cart = localStorage.getItem('cart');
+        if(cart){
+            let cartList: IProduct[] = JSON.parse(cart);
+            let list = cartList.filter(prod => prod.id !== id)
+            localStorage.setItem('cart' , JSON.stringify(list));
+        }
+    }
+
     getCart(): IProduct[]{
         let data = localStorage.getItem('cart');
         if(data){

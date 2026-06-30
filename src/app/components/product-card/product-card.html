@@ -26,15 +26,16 @@
         </div>
         <div>
             @if(isInCart()){
-                <span
+                <button
                     class="text-gray-500"
+                    (click)="$event.stopPropagation(); removeFromCart()"
                 >
                     in cart
-                </span>
+                </button>
             }
             @else{
                 <button
-                (click)="addToCart()"
+                (click)="$event.stopPropagation(); addToCart()"
                 >add to cart</button>
             }
         </div>

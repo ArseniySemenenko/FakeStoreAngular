@@ -2,7 +2,7 @@ import { Component, inject, linkedSignal, signal } from '@angular/core';
 import { UserService } from '../../services/user-service';
 import { FormsModule } from '@angular/forms';
 import { catchError , of } from 'rxjs';
-import { IUser } from '../../models/user-model';
+import { IUserLogin } from '../../models/user-model';
 @Component({
   selector: 'app-user-login',
   imports: [FormsModule],
@@ -14,13 +14,13 @@ export class UserLogin {
 
   isLogined = signal<boolean>(false);
 
-  currentUser = linkedSignal<IUser>(() => {
+  currentUser = linkedSignal<IUserLogin>(() => {
     if(this.isLogined()){
       console.log('logined' , this.userService.getCurrentUser());
       return this.userService.getCurrentUser();
     }
     else{
-      return {} as IUser;
+      return {} as IUserLogin;
     }
   });
 
@@ -37,6 +37,8 @@ export class UserLogin {
           catchError(() => {
             console.log("error");
             this.errorLogin.set("Wrong username or password")
+            this.name.set("");
+            this.password.set("");
             return of([]);
           })
         )
@@ -47,13 +49,13 @@ export class UserLogin {
             if(JSON.stringify(r) !== JSON.stringify([])){
               this.errorLogin.set(null)
               this.isLogined.set(true);
-              this.userService.setCurrentUser({name: this.name(), password: this.password()} as IUser)
+              this.userService.setCurrentUser({username: this.name(), password: this.password()} as IUserLogin)
             }
           }
         );
     }
     else{ 
-      this.errorLogin.set("Username or password cant be empty")
+      this.errorLogin.set("Username and password cant be empty")
     }
   }
 }

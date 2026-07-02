@@ -1,6 +1,10 @@
-export interface IUser{
+export interface IUserLogin{
     id: number,
-    name: string,
+    username: string,
     email: string,
     password: string,
+}
+
+export interface IUser{
+    
 }

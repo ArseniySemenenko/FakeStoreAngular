@@ -1,7 +1,7 @@
 <div class="w-screen h-[90vh] flex flex-col items-center">
     @if(!isLogined()){
     <div>
-        <h1 class="text-center font-[Bebas_Neue] text-4xl md:text-5xl lg:text-8xl mt-[15vh]"> Login </h1>
+        <h1 class="text-center font-[Bebas_Neue] text-7xl lg:text-8xl mt-[15vh]"> Login </h1>
         @if(errorLogin()){
             <h3 class="text-red-700">{{errorLogin()}}</h3>
         }
@@ -17,7 +17,9 @@
     }
     @else{
         <div class="text-black mt-[10vh]">
-            <p class="text-black" >{{currentUser().name}}</p>
+            <p class="text-black" >{{currentUser().username}}</p>
+            <p class="text-black" >{{currentUser().email}}</p>
+
         </div>
     }
 </div>

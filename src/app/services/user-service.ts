@@ -1,5 +1,5 @@
 import { inject, Service, signal } from '@angular/core';
-import { IUser } from '../models/user-model';
+import { IUserLogin } from '../models/user-model';
 import { HttpClient } from '@angular/common/http';
 import { catchError , of } from 'rxjs';
 
@@ -7,16 +7,22 @@ import { catchError , of } from 'rxjs';
 export class UserService {
     private readonly http = inject(HttpClient);
 
-    private currentUser = signal<IUser>({} as IUser);
+    private currentUser = signal<IUserLogin>({} as IUserLogin);
 
 
     getCurrentUser(){
         return this.currentUser();
     }
 
-    setCurrentUser(user: IUser){
+    setCurrentUser(user: IUserLogin){
         console.log("set: " , user);
-        this.currentUser.set(user);
+        this.http.get<IUserLogin[]>("https://fakestoreapi.com/users")
+        .subscribe((users) => {
+            this.currentUser.set(users.filter(u => u.username == user.username)[0])
+            console.log(users.filter(u => u.username == user.username))
+            console.log(users);
+        })
+
     }
 
     loginUser(name: string , password: string){

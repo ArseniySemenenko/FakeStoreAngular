@@ -1,0 +1,82 @@
+@if(isShow()){
+    <div class="h-[90vh] w-[300px] text-white bg-black fixed z-1">
+        <nav class="md:hidden flex py-5 justify-around">
+                 <div>
+            <a
+                routerLink='/catalog'
+                class="hover:text-gray-600 cursor-pointer active:text-gray-400"
+                //(click)="filter.set(`clothing`)"
+            >Catalog</a>
+        </div>
+        <div>
+            <a
+                routerLink="/about"
+                class="hover:text-gray-600 cursor-pointer active:text-gray-400"
+                //(click)="filter.set(`electronics`)"
+            >About</a>
+        </div>
+        </nav>
+        <nav class="md:hidden lg:hidden">
+            <div class="flex flex-col">
+                <div class="bg-gray-300 py-3 border-gray-400 border-2 border-b-0 text-gray-600  w-full flex justify-center items-center">
+            <button
+                class="hover:text-gray-900 cursor-pointer active:text-gray-400"
+                //(click)="filter.set(`clothing`)"
+                routerLink="/catalog/clothing"
+            >Clothes</button>
+        </div>
+        <div class="bg-gray-300 py-3 border-gray-400 border-2 border-b-0 w-full text-gray-600 flex justify-center items-center">
+            <button
+                class="hover:text-gray-900 cursor-pointer active:text-gray-400"
+                //(click)="filter.set(`electronics`)"
+                routerLink="/catalog/electronics"
+            >Electronics</button>
+        </div>
+        <div class="bg-gray-300 py-3 w-full border-gray-400 border-2 text-gray-600 flex justify-center items-center">
+            <button
+                class="hover:text-gray-900 cursor-pointer active:text-gray-400"
+                //(click)="filter.set(`jewelery`)"
+                routerLink="/catalog/jewelery"
+            >Jewelery</button>
+        </div>
+            </div>
+        </nav>
+
+        <div class="p-5">
+            <div>
+                <p class="text-center">Price</p>
+                <div class="flex flex-col">
+                    <div>
+                        <div>From</div><div><input class="bg-white" type="text"/></div>
+                    </div>
+                    <div>
+                        <div>To</div><div><input class="bg-white" type="text"/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5">
+            <div class="flex ">
+                <p class="pr-1">Sort by</p>
+                <div>
+                    <select 
+                        name="" 
+                        id=""
+                        class="focus:outline-none"
+                    >
+
+                        <option value="asc">Price down</option>
+
+                        <option value="desc">Price up</option>
+
+                        <option value="alph-down">Alphabet-dowm</option>
+
+                        <option value="alph-up">Alphabet-up</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+}

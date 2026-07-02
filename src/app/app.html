@@ -1,13 +1,14 @@
 <header
-    class="h-[10vh] w-screen bg-black fixed z-1 flex flex-row items-center justify-center" 
+    class="h-[10vh] w-full bg-black fixed z-1 flex flex-row items-center justify-center" 
   >
     <div class="flex-1 pl-[10px]">
-      <h2
+      <button
+        (click) = "showSideBar.update(val => !val)"
         class="text-white font-[Bebas_Neue] text-3xl"
-      >FakeStore</h2>
+      >FakeStore</button>
     </div>
     <div
-        class="text-white flex flex-row justify-between w-[50%] items-center "
+        class="hidden text-white md:flex flex-row justify-between w-[50%] items-center "
     >
         <div>
             <a
@@ -32,11 +33,15 @@
                 <a routerLink="cart"><img src="cart.png"></a>
             </button>
         </div>
-        <div class="pr-1">
+        <!--<div class="pr-1">
             <button>
                 <img src="account.png">
             </button>
-        </div>
+        </div>-->
     </div>
 </header>
-<router-outlet></router-outlet>
+
+<div class="w-full min-h-[90vh] pt-[10vh]">
+    <app-side-bar [isShow]="showSideBar()"></app-side-bar>
+    <router-outlet></router-outlet>
+</div>

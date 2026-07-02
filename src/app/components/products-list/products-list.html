@@ -1,8 +1,8 @@
 <div
-    class="flex pt-[10vh] w-screen min-h-screen justify-center flex-col"
+    class="flex grow min-h-screen justify-center flex-col"
 >
     <nav
-        class="w-screen h-[5vh] bg-gray-300 flex flex-row"
+        class="hidden w-full h-[5vh] bg-gray-300 md:flex flex-row"
     >
         <div class="border-r-gray-400 text-gray-600 border-r-2 w-[50%] h-full flex justify-center items-center">
             <button
@@ -29,7 +29,7 @@
 
     @if(filter() === "clothing" || filter() === "women" || filter() === "men"){
     <nav
-        class="w-screen h-[10vh]  flex flex-row justify-around items-center"
+        class="w-full h-[10vh]  flex flex-row justify-around items-center"
     >
         <div 
             class="hover:text-gray-900 cursor-pointer active:text-gray-400 rounded-3xl border border-gray-500 w-[10%] h-[50%] flex justify-center items-center"

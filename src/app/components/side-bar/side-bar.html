@@ -3,12 +3,14 @@
         <nav class="md:hidden flex py-5 justify-around">
                  <div>
             <a
+                (click)="isShow.set(false)"
                 routerLink='/catalog'
                 class="hover:text-gray-600 cursor-pointer active:text-gray-400"
             >Catalog</a>
         </div>
         <div>
             <a
+                (click)="isShow.set(false)"
                 routerLink="/about"
                 class="hover:text-gray-600 cursor-pointer active:text-gray-400"
             >About</a>

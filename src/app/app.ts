@@ -11,5 +11,5 @@ import { ModalCart } from "./components/modal-cart/modal-cart";
   styleUrl: './app.css'
 })
 export class App {
-  showSideBar = signal<boolean>(true);
+  showSideBar = signal<boolean>(false);
 }

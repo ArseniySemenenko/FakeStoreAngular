@@ -85,6 +85,7 @@
             class="px-5"
             [routerLink]="[]"
             [queryParams]="{sort: sortBy(), from: priceFrom() , to: priceTo()}"
+            (click)="isShow.set(false)"
         >Apply</a>
     </div>
 }

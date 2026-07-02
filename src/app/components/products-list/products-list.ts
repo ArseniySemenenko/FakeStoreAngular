@@ -16,17 +16,11 @@ export class ProductsList implements OnInit{
   products = signal<IProduct[]>([]);
 
   filter = input<string>("");
-  sort = input<string>("");
+  sort = input<string>("alph-down");
   from = input<number>(0);
   to = input<number>(1000);
 
   display = linkedSignal<IProduct[]>(() => {
-    /*if(!this.filter()) return this.products();
-    return this.products().filter(product => {
-      if(this.filter() === "men") return product.category === "men's clothing"
-      return product.category.includes(this.filter())
-    });*/
-
     let products = this.products();
 
     if(this.filter()){

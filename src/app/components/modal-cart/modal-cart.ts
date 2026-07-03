@@ -1,4 +1,4 @@
-import { Component , inject } from '@angular/core';
+import { Component , inject , signal} from '@angular/core';
 import { CartService } from '../../services/cart-service';
 import { CartItem } from '../cart-item/cart-item';
 import { RouterLink } from "@angular/router";
@@ -12,9 +12,10 @@ import { RouterLink } from "@angular/router";
 export class ModalCart {
   private readonly cartService = inject(CartService);
 
-  cart = this.cartService.getCart();
+  cart = signal(this.cartService.getCart());
 
-  removeFromCart(){
-    
+  removeFromCart(id: number){
+    this.cart.update(cart => cart.filter(card => card.id != id));
+    this.cartService.removeFromCart(id);
   }
 }

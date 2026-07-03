@@ -13,6 +13,8 @@ import { UserDetails } from '../user-details/user-details';
 export class UserLogin {
   private readonly userService = inject(UserService);
 
+  login = signal<boolean>(true);
+
   isLogined = signal<boolean>(this.userService.isLogined());
 
   currentUser = linkedSignal<IUser>(() => {
@@ -27,6 +29,7 @@ export class UserLogin {
 
   name = signal<string>("");
   password = signal<string>("");
+  email = signal<string>("");
 
   errorLogin = signal<string | null>(null);
 
@@ -64,6 +67,35 @@ export class UserLogin {
     }
     else{ 
       this.errorLogin.set("Username and password cant be empty")
+    }
+  }
+
+  registerUser(){
+    if(this.name() && this.password() && this.email()){
+      this.userService.registerUser(this.name() , this.password() , this.email())
+      .pipe(
+          catchError(() => {
+            console.log("error");
+            this.errorLogin.set("Wrong register")
+            this.name.set("");
+            this.password.set("");
+            this.email.set("");
+            return of([]);
+          })
+        )
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+          if('id' in data){
+            this.errorLogin.set(null)
+            this.isLogined.set(true);
+            this.userService.setRegistredUser(this.name() , this.password() , this.email(), data.id );
+          }
+        }
+      })
+    }
+    else{
+      this.errorLogin.set("Fields cant be empty")
     }
   }
 }

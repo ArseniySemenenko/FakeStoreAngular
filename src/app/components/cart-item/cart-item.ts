@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input , output } from '@angular/core';
 import { IProduct } from '../../models/product-model';
 import { CartService } from '../../services/cart-service';
 
@@ -14,7 +14,9 @@ export class CartItem {
 
   product = input.required<IProduct>();
 
-  removeFromCart(){
-    
+  remove = output<number>();
+
+  onRemove(){
+    this.remove.emit(this.product().id);
   }
 }

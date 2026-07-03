@@ -1,9 +1,9 @@
 <div
     class="w-screen flex flex-col items-center pt-[10vh]"
 >
-    @if(cart.length > 0){
-        @for(prod of cart; track prod.id){
-            <app-cart-item [product]="prod"></app-cart-item>
+    @if(cart().length > 0){
+        @for(prod of cart(); track prod.id){
+            <app-cart-item (remove)="removeFromCart($event)" [product]="prod"></app-cart-item>
         } 
     }
     @else{

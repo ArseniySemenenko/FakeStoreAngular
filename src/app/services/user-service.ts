@@ -30,7 +30,14 @@ export class UserService {
                 this.currentUser.set(JSON.parse(data));
             }
         })
+    }
 
+    setRegistredUser(name: string , password: string , email: string, id: number){
+        localStorage.setItem('currentUser' , JSON.stringify({id: id , username: name, password: password , email: email}));
+        let data = localStorage.getItem('currentUser');
+        if(data){
+            this.currentUser.set(JSON.parse(data));
+        }
     }
 
     logOut(){
@@ -45,6 +52,14 @@ export class UserService {
         return this.http.post("https://fakestoreapi.com/auth/login" , {
             username: name,
             password: password,
+        });
+    }
+
+    registerUser(name: string, password: string, email: string){
+        return this.http.post<IUser>("https://fakestoreapi.com/users" , {
+            username: name,
+            password: password,
+            email: email,
         });
     }
 }

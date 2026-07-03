@@ -31,7 +31,6 @@ export class ProductsList implements OnInit{
     }
 
     if(this.sort()){
-      console.log(this.sort());
       switch(this.sort()){
         case "asc":
           products = products.sort((a, b) => a.price - b.price);
@@ -48,12 +47,10 @@ export class ProductsList implements OnInit{
     }
 
     if(this.from()){
-      console.log(this.from())
       products = products.filter(p => p.price >= this.from());
     }
 
     if(this.to()){
-      console.log(this.to())
       products = products.filter(p => p.price <= this.to());
     }
 

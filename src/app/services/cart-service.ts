@@ -7,14 +7,12 @@ export class CartService {
         let cart = localStorage.getItem('cart');
         if(cart){
             let cartList = JSON.parse(cart);
-            console.log(cartList)
             localStorage.setItem('cart' , JSON.stringify([...cartList , product]));
         }
         else{
             localStorage.setItem('cart' , JSON.stringify([product]));
         }
         let info = localStorage.getItem('cart');
-        if(info) console.log(info)
     }
 
     removeFromCart(id: number){

@@ -16,12 +16,10 @@ export class UserService {
     }
 
     getCurrentUser(){
-        console.log("get current: " , this.currentUser);
         return this.currentUser();
     }
 
     setCurrentUser(name: string){
-        console.log("set: " , name);
         this.http.get<IUser[]>("https://fakestoreapi.com/users")
         .subscribe((users) => {
             localStorage.setItem('currentUser' , JSON.stringify(users.filter(u => u.username == name)[0]));

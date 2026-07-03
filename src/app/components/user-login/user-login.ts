@@ -19,7 +19,6 @@ export class UserLogin {
 
   currentUser = linkedSignal<IUser>(() => {
     if(this.isLogined()){
-      console.log('logined' , this.userService.getCurrentUser());
       return this.userService.getCurrentUser();
     }
     else{
@@ -42,11 +41,9 @@ export class UserLogin {
 
   loginUser(){
     if(this.name() && this.password()){
-        let res;
         this.userService.loginUser(this.name() , this.password())
         .pipe(
           catchError(() => {
-            console.log("error");
             this.errorLogin.set("Wrong username or password")
             this.name.set("");
             this.password.set("");
@@ -55,8 +52,6 @@ export class UserLogin {
         )
         .subscribe(
           (r) => {
-            res = r;
-            console.log("res: " , r);
             if(JSON.stringify(r) !== JSON.stringify([])){
               this.errorLogin.set(null)
               this.isLogined.set(true);
@@ -75,7 +70,6 @@ export class UserLogin {
       this.userService.registerUser(this.name() , this.password() , this.email())
       .pipe(
           catchError(() => {
-            console.log("error");
             this.errorLogin.set("Wrong register")
             this.name.set("");
             this.password.set("");
@@ -85,7 +79,6 @@ export class UserLogin {
         )
       .subscribe({
         next: (data) => {
-          console.log(data)
           if('id' in data){
             this.errorLogin.set(null)
             this.isLogined.set(true);

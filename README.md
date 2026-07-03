@@ -5,34 +5,63 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Functionality
 
 product-service.ts:
+
     getProducts
+
     getProduct(id)
+
 cart-service.ts:
+
     addToCart(product)
+
     removeFromCart(id)
+
     getCart()
+
     isInCart(product)
+
 user-service.ts:
+
     isLogined
+
     getCurrentUser()
+
     setCurrentUser()
+
     setRegistredUser()
+
     logOut()
+
     loginUser(name , password)
+
     registredUser(name, password, email)
+
 components:
+
     about-page
+
     cart-item
+
     modal-cart
+
     product-card
+
     product-details
+
     products-list
+
     side-bar
+
     user-details
+
     user-login
+
 models:
+
     product-model.ts
+
     user-model.ts
+    
 
 ## Development server
 

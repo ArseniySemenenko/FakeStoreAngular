@@ -5,7 +5,7 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-modal-cart',
-  imports: [CartItem, RouterLink],
+  imports: [CartItem],
   templateUrl: './modal-cart.html',
   styleUrl: './modal-cart.css',
 })

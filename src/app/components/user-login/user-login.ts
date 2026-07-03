@@ -2,25 +2,26 @@ import { Component, inject, linkedSignal, signal } from '@angular/core';
 import { UserService } from '../../services/user-service';
 import { FormsModule } from '@angular/forms';
 import { catchError , of } from 'rxjs';
-import { IUserLogin } from '../../models/user-model';
+import { IUser } from '../../models/user-model';
+import { UserDetails } from '../user-details/user-details';
 @Component({
   selector: 'app-user-login',
-  imports: [FormsModule],
+  imports: [FormsModule , UserDetails],
   templateUrl: './user-login.html',
   styleUrl: './user-login.css',
 })
 export class UserLogin {
   private readonly userService = inject(UserService);
 
-  isLogined = signal<boolean>(false);
+  isLogined = signal<boolean>(this.userService.isLogined());
 
-  currentUser = linkedSignal<IUserLogin>(() => {
+  currentUser = linkedSignal<IUser>(() => {
     if(this.isLogined()){
       console.log('logined' , this.userService.getCurrentUser());
       return this.userService.getCurrentUser();
     }
     else{
-      return {} as IUserLogin;
+      return {} as IUser;
     }
   });
 
@@ -49,7 +50,7 @@ export class UserLogin {
             if(JSON.stringify(r) !== JSON.stringify([])){
               this.errorLogin.set(null)
               this.isLogined.set(true);
-              this.userService.setCurrentUser({username: this.name(), password: this.password()} as IUserLogin)
+              this.userService.setCurrentUser(this.name());
             }
           }
         );

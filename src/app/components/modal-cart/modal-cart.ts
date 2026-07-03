@@ -13,4 +13,8 @@ export class ModalCart {
   private readonly cartService = inject(CartService);
 
   cart = this.cartService.getCart();
+
+  removeFromCart(){
+    
+  }
 }

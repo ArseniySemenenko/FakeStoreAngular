@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed} from '@angular/core';
 import { UserService } from '../../services/user-service';
+import { IUser} from '../../models/user-model';
 
 @Component({
   selector: 'app-user-details',
@@ -10,5 +11,5 @@ import { UserService } from '../../services/user-service';
 export class UserDetails {
   private readonly userService = inject(UserService);
 
-  currentUser = this.userService.getCurrentUser();
+  currentUser = computed(() => <IUser>(this.userService.getCurrentUser()))
 }

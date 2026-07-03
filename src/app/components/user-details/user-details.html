@@ -1,3 +1,12 @@
-<div>
-
+<div class="h-[90vh] w-screen flex justify-center items-center">
+        <div>
+            <img src="account-box.svg" class="h-[40vh] w-[40vw]">
+        </div>
+        <div class="text-7xl font-[Bebas_Neue]">
+            <p>{{currentUser().username}}</p>
+            <p>{{currentUser().email}}</p>
+            <button
+                class="hover:cursor-pointer hover:text-gray-500 "
+            >LOGOUT</button>
+        </div>
 </div>

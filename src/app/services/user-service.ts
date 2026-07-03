@@ -33,7 +33,13 @@ export class UserService {
 
     }
 
-    
+    logOut(){
+        if(this.isLogined()){
+            localStorage.setItem('currentUser' , '');
+            this.currentUser.set({} as IUser);
+        }
+    }
+
 
     loginUser(name: string , password: string){
         return this.http.post("https://fakestoreapi.com/auth/login" , {

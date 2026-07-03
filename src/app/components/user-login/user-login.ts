@@ -30,6 +30,13 @@ export class UserLogin {
 
   errorLogin = signal<string | null>(null);
 
+
+  handleLogOut(){
+    this.isLogined.set(false);
+    this.name.set("");
+    this.password.set("");
+  }
+
   loginUser(){
     if(this.name() && this.password()){
         let res;

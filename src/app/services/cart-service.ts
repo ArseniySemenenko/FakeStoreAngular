@@ -12,7 +12,6 @@ export class CartService {
         else{
             localStorage.setItem('cart' , JSON.stringify([product]));
         }
-        let info = localStorage.getItem('cart');
     }
 
     removeFromCart(id: number){

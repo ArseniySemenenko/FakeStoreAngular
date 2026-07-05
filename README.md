@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.0.
 
+## Deploy
+
+https://arseniysemenenko.github.io/FakeStoreAngular/catalog
+
 ## Functionality
 
 product-service.ts:

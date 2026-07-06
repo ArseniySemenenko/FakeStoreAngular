@@ -1,5 +1,5 @@
 <div class="w-screen h-[90vh] flex flex-col items-center">
-    @if(!isLogined()){
+    @if(!this.userService.isLogined()){
 
 
     <nav class="font-bold w-[50%] h-[10vh] flex justify-around items-center">
@@ -55,6 +55,6 @@
 
     }
     @else{
-        <app-user-details (onLogOut)="handleLogOut()"></app-user-details>
+        <app-user-details></app-user-details>
     }
 </div>

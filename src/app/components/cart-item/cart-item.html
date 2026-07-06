@@ -18,7 +18,7 @@
         </div>
         <div>
             <button
-                (click)="onRemove()"
+                (click)="this.cartService.removeFromCart(this.product().id)"
                 class="hover:cursor-pointer active:text-gray-500"
             >
                 remove

@@ -1,4 +1,4 @@
-import { inject, Service, signal } from '@angular/core';
+import { computed, inject, Service, signal } from '@angular/core';
 import { IUser } from '../models/user-model';
 import { HttpClient } from '@angular/common/http';
 
@@ -6,17 +6,16 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
     private readonly http = inject(HttpClient);
 
-    //private currentUser = signal<IUser>({} as IUser);
     data = localStorage.getItem('currentUser');
-    private currentUser = signal<IUser>(this.data && JSON.parse(this.data) || {} as IUser);
+    private currentUserItem = signal<IUser>(this.data && JSON.parse(this.data) || {} as IUser);
+    readonly currentUser = this.currentUserItem.asReadonly();
 
-
-    isLogined(){
-        return JSON.stringify(this.currentUser()) != JSON.stringify({});
-    }
+    readonly isLogined = computed(() => {
+        return JSON.stringify(this.currentUserItem()) !== JSON.stringify({});
+    })
 
     getCurrentUser(){
-        return this.currentUser();
+        return this.currentUserItem();
     }
 
     setCurrentUser(name: string){
@@ -25,7 +24,7 @@ export class UserService {
             localStorage.setItem('currentUser' , JSON.stringify(users.filter(u => u.username == name)[0]));
             let data = localStorage.getItem('currentUser');
             if(data){
-                this.currentUser.set(JSON.parse(data));
+                this.currentUserItem.set(JSON.parse(data));
             }
         })
     }
@@ -34,14 +33,14 @@ export class UserService {
         localStorage.setItem('currentUser' , JSON.stringify({id: id , username: name, password: password , email: email}));
         let data = localStorage.getItem('currentUser');
         if(data){
-            this.currentUser.set(JSON.parse(data));
+            this.currentUserItem.set(JSON.parse(data));
         }
     }
 
     logOut(){
         if(this.isLogined()){
             localStorage.setItem('currentUser' , '');
-            this.currentUser.set({} as IUser);
+            this.currentUserItem.set({} as IUser);
         }
     }
 

@@ -9,14 +9,5 @@ import { IUser} from '../../models/user-model';
   styleUrl: './user-details.css',
 })
 export class UserDetails {
-  private readonly userService = inject(UserService);
-
-  currentUser = computed(() => <IUser>(this.userService.getCurrentUser()));
-
-  onLogOut = output();
-
-  logOut(){
-    this.userService.logOut();
-    this.onLogOut.emit();
-  }
+  readonly userService = inject(UserService);
 }

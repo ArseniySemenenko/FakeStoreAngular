@@ -11,33 +11,17 @@ import { UserDetails } from '../user-details/user-details';
   styleUrl: './user-login.css',
 })
 export class UserLogin {
-  private readonly userService = inject(UserService);
+  readonly userService = inject(UserService);
 
+
+  //LogIn / Register switcher
   login = signal<boolean>(true);
-
-  isLogined = signal<boolean>(this.userService.isLogined());
-
-  currentUser = linkedSignal<IUser>(() => {
-    if(this.isLogined()){
-      return this.userService.getCurrentUser();
-    }
-    else{
-      return {} as IUser;
-    }
-  });
 
   name = signal<string>("");
   password = signal<string>("");
   email = signal<string>("");
 
   errorLogin = signal<string | null>(null);
-
-
-  handleLogOut(){
-    this.isLogined.set(false);
-    this.name.set("");
-    this.password.set("");
-  }
 
   loginUser(){
     if(this.name() && this.password()){
@@ -54,7 +38,6 @@ export class UserLogin {
           (r) => {
             if(JSON.stringify(r) !== JSON.stringify([])){
               this.errorLogin.set(null)
-              this.isLogined.set(true);
               this.userService.setCurrentUser(this.name());
             }
           }
@@ -81,7 +64,6 @@ export class UserLogin {
         next: (data) => {
           if('id' in data){
             this.errorLogin.set(null)
-            this.isLogined.set(true);
             this.userService.setRegistredUser(this.name() , this.password() , this.email(), data.id );
           }
         }

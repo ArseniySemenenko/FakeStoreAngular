@@ -3,11 +3,11 @@
             <img src="account-box.svg" class="h-[40vh] w-[40vw]">
         </div>
         <div class="text-3xl md:text-7xl font-[Bebas_Neue]">
-            <p>{{currentUser().username}}</p>
-            <p>{{currentUser().email}}</p>
+            <p>{{this.userService.currentUser().username}}</p>
+            <p>{{this.userService.currentUser().email}}</p>
             <button
                 class="hover:cursor-pointer hover:text-gray-500 "
-                (click)="logOut()"
+                (click)="this.userService.logOut()"
             >LOGOUT</button>
         </div>
 </div>

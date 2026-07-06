@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
     private readonly http = inject(HttpClient);
 
-    //private currentUser = signal<IUser>({} as IUser);
     data = localStorage.getItem('currentUser');
     private currentUserItem = signal<IUser>(this.data && JSON.parse(this.data) || {} as IUser);
     readonly currentUser = this.currentUserItem.asReadonly();

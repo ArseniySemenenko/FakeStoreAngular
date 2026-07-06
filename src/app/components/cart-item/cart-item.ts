@@ -10,13 +10,9 @@ import { CartService } from '../../services/cart-service';
 })
 export class CartItem {
 
-  private readonly cartService = inject(CartService);
+  readonly cartService = inject(CartService);
 
   product = input.required<IProduct>();
 
   remove = output<number>();
-
-  onRemove(){
-    this.remove.emit(this.product().id);
-  }
 }

@@ -10,13 +10,5 @@ import { CartItem } from '../cart-item/cart-item';
 })
 export class ModalCart{
   private readonly cartService = inject(CartService);
-
-  //cart = signal(this.cartService.getCart());
-
   cart = this.cartService.cart;
-
-  removeFromCart(id: number){
-    //this.cart.update(cart => cart.filter(card => card.id != id));
-    this.cartService.removeFromCart(id);
-  }
 }
